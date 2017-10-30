@@ -5,7 +5,7 @@ export default function persist(config={}) {
     key = 'REDUX',
     storage = storages.getStorage('session'),
     reducer = (state) => state,
-    save = (key, storage, state) => {storage.setItem(key, JSON.stringify(reducer(state)))}
+    save = (key, storage, state) => {storage.setItem(key, JSON.stringify(state))}
   } = config
   persist.config = {
     key,
@@ -28,7 +28,7 @@ export default function persist(config={}) {
       return _dispatch(action)
     }
     store.subscribe(() => {
-      save(key, storage, store.getState())
+      save(key, storage, reducer(store.getState()))
     })
     return store
   }
