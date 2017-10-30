@@ -23,8 +23,9 @@ const store = createStore(
 ```
 ## Options
 ```js
-key?String: default value "REDUX"
-storage?Object: default value sessionStorage
-reducer?Function: default value (state) => state
-save?Function: default value (key, storage, state) => {storage.setItem(key, JSON.stringify(reducer(state)))}
+key?String: default value "REDUX"   保存的key
+storage?Object: default value sessionStorage   保存的位置
+reducer?Function: default value (state) => state  保存过滤
+save?Function: default value (key, storage, state) => {storage.setItem(key, JSON.stringify(state))} 存储函数
+ondispatch?Function: default undefined   dispatch时触发
 ```
